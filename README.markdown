@@ -4,7 +4,7 @@ License Plate Preview
 This code is intended to give a rough preview, how your new license plate will
 look like. 
 
-You may see an installed version at http://schmidt.github.com/license_plate/
+You may see an installed version at [schmidt.github.com/license_plate/](http://schmidt.github.com/license_plate/)
 
 Limitations
 -----------
