@@ -1,0 +1,57 @@
+.fe_font .character, .fe_font .whitespace, .fe_font .separator {
+  display: inline-block;
+  height: 103px;
+  margin-top: -47px;
+  text-indent: -1000em;
+}
+.fe_font .character {
+  background: white url(../images/fe_font.png) no-repeat 0px 0px;
+}
+.fe_font .separator {
+  background: white url(../images/separator.png) no-repeat 5px 0px;
+}
+.fe_font .whitespace, .fe_font .separator, .fe_font .number { width: 63px; }
+.fe_font .letter { width: 67px; }
+.fe_font .whitespace { background: white; }
+
+.fe_font .A { background-position:    1px 0px; }
+.fe_font .B { background-position:  -76px 0px; }
+.fe_font .C { background-position: -154px 0px; }
+.fe_font .D { background-position: -233px 0px; }
+.fe_font .E { background-position: -311px 0px; }
+.fe_font .F { background-position: -389px 0px; }
+.fe_font .G { background-position: -467px 0px; }
+.fe_font .H { background-position: -546px 0px; }
+.fe_font .I { background-position: -616px 0px; }
+.fe_font .J { background-position: -686px 0px; }
+.fe_font .K { background-position: -764px 0px; }
+.fe_font .L { background-position: -842px 0px; }
+.fe_font .M { background-position: -921px 0px; }
+
+.fe_font .N { background-position:    1px -170px; }
+.fe_font .O { background-position:  -77px -170px; }
+.fe_font .P { background-position: -155px -170px; }
+.fe_font .Q { background-position: -234px -170px; }
+.fe_font .R { background-position: -312px -170px; }
+.fe_font .S { background-position: -390px -170px; }
+.fe_font .T { background-position: -468px -170px; }
+.fe_font .U { background-position: -546px -170px; }
+.fe_font .V { background-position: -623px -170px; }
+.fe_font .W { background-position: -701px -170px; }
+.fe_font .X { background-position: -778px -170px; }
+.fe_font .Y { background-position: -856px -170px; }
+.fe_font .Z { background-position: -934px -170px; }
+
+.fe_font .no0 { background-position:    1px -340px; }
+.fe_font .no1 { background-position:  -73px -340px; }
+.fe_font .no2 { background-position: -147px -340px; }
+.fe_font .no3 { background-position: -222px -340px; }
+.fe_font .no4 { background-position: -296px -340px; }
+.fe_font .no5 { background-position: -370px -340px; }
+.fe_font .no6 { background-position: -444px -340px; }
+.fe_font .no7 { background-position: -518px -340px; }
+.fe_font .no8 { background-position: -593px -340px; }
+.fe_font .no9 { background-position: -667px -340px; }
+.fe_font .AE  { background-position: -741px -340px; }
+.fe_font .OE  { background-position: -819px -340px; }
+.fe_font .UE  { background-position: -897px -340px; }

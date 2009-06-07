@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>License Plate Preview Test</title>
+  <link rel="stylesheet" href="test/testsuite.css" type="text/css" media="screen" />
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/application.js"></script>
+  <script>
+    $(document).ready(function(){
+      var throwsException = function(fun, message) {
+        var exceptionThrown;
+        try {
+          fun();
+          exceptionThrown = false;
+        } catch(e) {
+          exceptionThrown = true;
+        }
+        ok( exceptionThrown, message || "An exception should be thrown" );
+      };
+      var throwsNoException = function(fun, message) {
+        var noExceptionThrown;
+        try {
+          fun();
+          noExceptionThrown = true;
+        } catch(e) {
+          exceptionThrown = false;
+          try{console.log(e)} catch(e) {}
+        }
+        ok( noExceptionThrown, message || "No exception should be thrown" );
+      }
+
+module( "Test extensions" );
+
+test("throwsNoException", function() {
+  throwsNoException( function() {} );
+});
+test("throwsException", function() {
+  throwsException( function() { throw new Error("Error thrown for test purpose") } );
+});
+    
+module("LicensePlate");
+
+test("should register as jQuery Plugin", function() {
+  ok( $("<form>").licencePlateForm, "licencePlateForm function should exist" );
+});
+
+test("should work for form elements", function() {
+  throwsNoException( function() { $("<form>").licencePlateForm() } );
+});
+
+test("should raise an error for other elements", function() {
+  throwsException( function() { $("<input>").licencePlateForm(); } );
+});
+
+module("parseData");
+
+test("should standard parse 'B-BA 1234'", function() {
+  var result = $.LicensePlate.parseData($("<input value='B-BA 1234' />"));
+  same( result.county,  "B",    "should parse the county portion" );
+  same( result.letters, "BA",   "should parse the first, letter portion" );
+  same( result.numbers, "1234", "should parse the second, number portion" );
+});
+
+test("should parse short plates: 'B-A 1'", function() {
+  var result = $.LicensePlate.parseData($("<input value='B-A 1' />"));
+  same( result.county,  "B", "should parse the county portion" );
+  same( result.letters, "A", "should parse the first, letter portion" );
+  same( result.numbers, "1", "should parse the second, number portion" );
+});
+
+test("should parse historic licenses plates: 'B-A 123H'", function() {
+  var result = $.LicensePlate.parseData($("<input value='B-A 123H' />"));
+  same( result.county,  "B",    "should parse the county portion" );
+  same( result.letters, "A",    "should parse the first, letter portion" );
+  same( result.numbers, "123H", "should parse the second, number portion" );
+});
+
+test("should parse longer counties: 'MOL-AB 123'", function() {
+  var result = $.LicensePlate.parseData($("<input value='MOL-AB 123' />"));
+  same( result.county,  "MOL", "should parse the county portion" );
+  same( result.letters, "AB",  "should parse the first, letter portion" );
+  same( result.numbers, "123", "should parse the second, number portion" );
+});
+
+test("should return false for empty input elements", function() {
+  var result = $.LicensePlate.parseData($("<input value='' />"));
+  same( result, false, "should be false" );
+});
+
+test("should return false for when delimiter '-' is missing", function() {
+  var result = $.LicensePlate.parseData($("<input value='BBI 0' />"));
+  same( result, false, "should be false" );
+});
+
+test("should return false for when delimiter ' ' is missing", function() {
+  var result = $.LicensePlate.parseData($("<input value='B-BI0' />"));
+  same( result, false, "should be false" );
+});
+
+module("transformCharacter");
+
+test("should create span element for letters", function() {
+  var result = $.LicensePlate.transformCharacter("A");
+  ok( result.is("span"), "should be span" );
+});
+
+test("should create a span with letter class for letters", function() {
+  var result = $.LicensePlate.transformCharacter("A");
+  ok( result.is("span.letter"), "should be span" );
+});
+
+test("should create a span with class matching the letter", function() {
+  var result = $.LicensePlate.transformCharacter("A");
+  ok( result.is("span.A"), "should be span" );
+
+  result = $.LicensePlate.transformCharacter("U");
+  ok( result.is("span.U"), "should be span" );
+
+  result = $.LicensePlate.transformCharacter("Z");
+  ok( result.is("span.Z"), "should be span" );
+});
+
+test("should create a span with class matching the letter (special handling for umlauts)", function() {
+  var result = $.LicensePlate.transformCharacter("Ä");
+  ok( result.is("span.AE"), "should be span" );
+
+  result = $.LicensePlate.transformCharacter("Ö");
+  ok( result.is("span.OE"), "should be span" );
+
+  result = $.LicensePlate.transformCharacter("Ü");
+  ok( result.is("span.UE"), "should be span" );
+});
+
+test("should create span containing the letter", function() {
+  var result = $.LicensePlate.transformCharacter("A");
+  same( result.text(), "A" );
+
+  result = $.LicensePlate.transformCharacter("U");
+  same( result.text(), "U" );
+
+  result = $.LicensePlate.transformCharacter("Ü");
+  same( result.text(), "Ü" );
+});
+
+test("should upcase the letter when building the span", function() {
+  var result = $.LicensePlate.transformCharacter("a");
+  ok( result.is("span.A"), "should be span.A" );
+
+  result = $.LicensePlate.transformCharacter("ä");
+  ok( result.is("span.AE"), "should be span.AE" );
+
+  result = $.LicensePlate.transformCharacter("z");
+  ok( result.is("span.Z"), "should be span.Z" );
+});
+
+test("should create span element for numbers", function() {
+  var result = $.LicensePlate.transformCharacter("1");
+  ok( result.is("span"), "should be span" );
+});
+
+test("should create span with class number for numbers", function() {
+  var result = $.LicensePlate.transformCharacter("1");
+  ok( result.is("span.number"), "should be span.number" );
+});
+
+test("should create span with class 'no + number'", function() {
+  var result = $.LicensePlate.transformCharacter("1");
+  ok( result.is("span.no1"), "should be span.no1" );
+
+  result = $.LicensePlate.transformCharacter("9");
+  ok( result.is("span.no9"), "should be span.no9" );
+});
+
+test("should create span containing the number", function() {
+  var result = $.LicensePlate.transformCharacter("0");
+  same( result.text(), "0" );
+
+  result = $.LicensePlate.transformCharacter("4");
+  same( result.text(), "4" );
+});
+
+test("should create span element for white space", function() {
+  var result = $.LicensePlate.transformCharacter(" ");
+  ok( result.is("span"), "should be span" );
+});
+
+test("should create span with class whitespace for white space", function() {
+  var result = $.LicensePlate.transformCharacter(" ");
+  ok( result.is("span.whitespace"), "should be span.whitespace" );
+});
+
+test("should create span containing white space", function() {
+  var result = $.LicensePlate.transformCharacter(" ");
+  same( result.text(), jQuery("<span>&nbsp;</span>").text() );
+});
+  });
+  </script>
+</head>
+<body>
+  <script type="text/javascript" src="test/testrunner.js"></script>
+  <h1>License Plate Preview Test</h1>
+  <h2 id="banner"></h2>
+  <h2 id="userAgent"></h2>
+
+  <ol id="tests"></ol>
+
+  <div id="main"></div>
+</body>
+</html>

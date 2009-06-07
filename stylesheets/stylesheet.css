@@ -1,0 +1,48 @@
+body {
+  background-color: #FFF;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+}
+
+a img {
+  border: none;
+}
+
+a {
+  color: #0000FF;
+}
+
+body {
+  background-color: #4B7399;
+}
+
+#container {
+  width: 75%;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+}
+
+.clear { clear: both; }
+.hidden { display: none; }
+
+.preview {
+  line-height: 103px;
+  height: 103px;
+  padding: 10px 5px 10px 55px;
+  float: right;
+  background: white url(../images/plate.png) no-repeat -10px -11px;
+  border: 5px solid black;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+.line {
+  clear: right;
+}
+
+.footer {
+  text-align: right;
+  font-size: smaller;
+}
