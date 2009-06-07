@@ -1,1 +1,119 @@
-My GitHub Page
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Kfz-Kennzeichen-Vorschau</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/fe_font.css" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/application.js"></script>
+    <script type="text/javascript">
+      jQuery(function(){
+        jQuery(".plates_preview").licencePlateForm();
+        jQuery("[name=add]").click( function() {
+          var line = $(this).parents(".plates_preview").find(".line:last");
+          line.after(line.clone());
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Kfz-Kennzeichen-Vorschau</h1>
+      <form action="get" class="plates_preview">
+        <fieldset>
+          <legend>Geben Sie das Kennzeichen ein</legend>
+          <div class="line">
+            <p>
+              <label>
+                Kennzeichen:
+                <input type="text" name="data" value="B-A 1234" />
+              </label>
+            </p>
+            <p class="fe_font preview"></p>
+          </div>
+          <div class="line">
+            <p>
+              <label>
+                Kennzeichen:
+                <input type="text" name="data" value="M-QP 123" />
+              </label>
+            </p>
+            <p class="fe_font preview"></p>
+          </div>
+          <div class="line">
+            <p>
+              <label>
+                Kennzeichen:
+                <input type="text" name="data" value="F-IT 2021" />
+              </label>
+            </p>
+            <p class="fe_font preview"></p>
+          </div>
+          <p class="clear">
+            <input type="submit" name="submit" value="Vorschau" />
+            <input type="submit" name="add"  value="Neue Zeile" />
+          </p>
+        </fieldset>
+      </form>
+
+      <div class="fe_font hidden">
+        <p>
+          <span class="character letter A">A</span>
+          <span class="character letter B">B</span>
+          <span class="character letter C">C</span>
+          <span class="character letter D">D</span>
+          <span class="character letter E">E</span>
+          <span class="character letter F">F</span>
+          <span class="character letter G">G</span>
+          <span class="character letter H">H</span>
+          <span class="character letter I">I</span>
+          <span class="character letter J">J</span>
+          <span class="character letter K">K</span>
+          <span class="character letter L">L</span>
+          <span class="character letter M">M</span>
+        </p>
+        <p>
+          <span class="character letter N">N</span>
+          <span class="character letter O">O</span>
+          <span class="character letter P">P</span>
+          <span class="character letter Q">Q</span>
+          <span class="character letter R">R</span>
+          <span class="character letter S">S</span>
+          <span class="character letter T">T</span>
+          <span class="character letter U">U</span>
+          <span class="character letter V">V</span>
+          <span class="character letter W">W</span>
+          <span class="character letter X">X</span>
+          <span class="character letter Y">Y</span>
+          <span class="character letter Z">Z</span>
+        </p>
+        <p>
+          <span class="character number no0">0</span>
+          <span class="character number no1">1</span>
+          <span class="character number no2">2</span>
+          <span class="character number no3">3</span>
+          <span class="character number no4">4</span>
+          <span class="character number no5">5</span>
+          <span class="character number no6">6</span>
+          <span class="character number no7">7</span>
+          <span class="character number no8">8</span>
+          <span class="character number no9">9</span>
+          <span class="character letter AE">Ä</span>
+          <span class="character letter OE">Ö</span>
+          <span class="character letter UE">Ü</span>
+        </p>
+      </div>
+      <p class="footer">
+        Developed by <a href="http://nach-vorne.eu">Gregor Schmidt</a><br />
+        Layout by <a href="http://railscasts.com/episodes/58-how-to-make-a-generator" title="Designed for the a Railscast episode demonstating rails generators">Ryan Bates</a><br />
+        Images from Wikipedia 
+        [<a href="http://de.wikipedia.org/wiki/Datei:FE-Schrift.svg" title="FE-Schrift">1</a>]
+        [<a href="http://de.wikipedia.org/wiki/Datei:Plate-KA-PA777.JPG" title="Kfz-Kennzeichen mit FE-Schrift">2</a>]
+      </p>
+    </div>
+  </body>
+</html>
