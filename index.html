@@ -11,7 +11,7 @@
     <script type="text/javascript" src="javascripts/application.js"></script>
     <script type="text/javascript">
       jQuery(function(){
-        jQuery(".plates_preview").licencePlateForm();
+        jQuery(".plates_preview").licencePlateForm().submit();
         jQuery("[name=add]").click( function() {
           var line = $(this).parents(".plates_preview").find(".line:last");
           line.after(line.clone());
