@@ -17,6 +17,18 @@
           line.after(line.clone());
           return false;
         });
+        if (document.location.search.length > 0) {
+          var line = $(".plates_preview").find(".line:first");
+
+          var code = document.location.search;
+          code = code.replace("?", "");
+          code = unescape(code);
+          line.find("[name=data]").val(code);
+
+          $(".plates_preview").find(".line").not(":first").remove();
+
+          jQuery(".plates_preview").submit();
+        }
       });
     </script>
   </head>

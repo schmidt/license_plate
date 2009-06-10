@@ -44,6 +44,11 @@ body {
   clear: right;
 }
 
+.preview a {
+  float :right;
+  line-height: 4em;
+}
+
 .footer {
   text-align: right;
   font-size: smaller;

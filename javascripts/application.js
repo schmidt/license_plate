@@ -69,6 +69,9 @@
     generateWhitespace : function() {
       return $("<span class='whitespace'>&nbsp;</span>");
     },
+    generateLink : function(code) {
+      return $("<a href='?" + code + "'>" + code + "</a>");
+    },
     codeStateMapping : {
       "A"   : "Bayern",
       "AA"  : "Baden-Württemberg",
@@ -520,6 +523,10 @@
           $.each(plate.numbers.match(/./g), function() {
             previewElement.append($.LicensePlate.transformCharacter(this));
           });
+
+          previewElement.append("<br />");
+
+          previewElement.append($.LicensePlate.generateLink(input.val()));
         }
       });
 
