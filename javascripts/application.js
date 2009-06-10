@@ -88,10 +88,6 @@
             previewElement.append($.LicensePlate.transformCharacter(this));
           });
 
-          if (plate.letters.length == 1) {
-            previewElement.append($.LicensePlate.generateWhitespace());
-          }
-
           previewElement.append($.LicensePlate.generateWhitespace());
 
           $.each(plate.numbers.match(/./g), function() {

@@ -31,6 +31,8 @@ body {
 .preview {
   line-height: 103px;
   height: 103px;
+  min-width: 565px;
+  text-align:center;
   padding: 10px 5px 10px 55px;
   float: right;
   background: white url(../images/plate.png) no-repeat -10px -11px;

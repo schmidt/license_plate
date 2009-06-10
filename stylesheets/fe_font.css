@@ -8,10 +8,12 @@
   background: white url(../images/fe_font.png) no-repeat 0px 0px;
 }
 .fe_font .separator {
-  background: white url(../images/separator.png) no-repeat 5px 0px;
+  background: white url(../images/separator.png) no-repeat 2px 0px;
 }
-.fe_font .whitespace, .fe_font .separator, .fe_font .number { width: 63px; }
+.fe_font .number { width: 63px; }
 .fe_font .letter { width: 67px; }
+.fe_font .separator { width : 58px; }
+.fe_font .whitespace { width : 35px; }
 .fe_font .whitespace { background: white; }
 
 .fe_font .A { background-position:    1px 0px; }
