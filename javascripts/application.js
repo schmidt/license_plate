@@ -69,13 +69,15 @@
     generateWhitespace : function() {
       return $("<span class='whitespace'>&nbsp;</span>");
     },
+    stateCodeMapping : {
+      "B"  : "berlin",
+      "HH" : "hamburg",
+      "HB" : "bremen",
+      "M"  : "bayern",
+      "S"  : "bawue"
+    },
     stateCode : function(county) {
-      switch(county) {
-        case "B" :
-          return "B";
-        default:
-          return null;
-      }
+      return $.LicensePlate.stateCodeMapping[county];
     },
     onSubmit : function(eve) {
       $(this).find("[name=data]").each(function(){

@@ -59,6 +59,9 @@
 .fe_font .UE  { background-position: -897px -340px; }
 
 
-.fe_font.B .separator {
-  background-image: url(../images/separator_b.png);
+.fe_font.berlin .separator {
+  background-image: url(../images/separator_berlin.png);
+}
+.fe_font.bawue .separator {
+  background-image: url(../images/separator_bawue.png);
 }
