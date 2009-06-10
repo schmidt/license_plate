@@ -57,3 +57,8 @@
 .fe_font .AE  { background-position: -741px -340px; }
 .fe_font .OE  { background-position: -819px -340px; }
 .fe_font .UE  { background-position: -897px -340px; }
+
+
+.fe_font.B .separator {
+  background-image: url(../images/separator_b.png);
+}

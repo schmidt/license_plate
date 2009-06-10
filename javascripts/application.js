@@ -69,6 +69,14 @@
     generateWhitespace : function() {
       return $("<span class='whitespace'>&nbsp;</span>");
     },
+    stateCode : function(county) {
+      switch(county) {
+        case "B" :
+          return "B";
+        default:
+          return null;
+      }
+    },
     onSubmit : function(eve) {
       $(this).find("[name=data]").each(function(){
         var input = $(this);
@@ -81,6 +89,8 @@
           $.each(plate.county.match(/./g), function() {
             previewElement.append($.LicensePlate.transformCharacter(this));
           });
+
+          previewElement.addClass($.LicensePlate.stateCode(plate.county));
 
           previewElement.append($.LicensePlate.generateSeparator());
 
