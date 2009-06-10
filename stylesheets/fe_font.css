@@ -58,10 +58,51 @@
 .fe_font .OE  { background-position: -819px -340px; }
 .fe_font .UE  { background-position: -897px -340px; }
 
-
+.fe_font.baden_wuertemberg .separator {
+  background-image: url(../images/separator_baden_wuertemberg.png);
+}
+.fe_font.bayern .separator {
+  background-image: url(../images/separator_bayern.png);
+}
 .fe_font.berlin .separator {
   background-image: url(../images/separator_berlin.png);
 }
-.fe_font.bawue .separator {
-  background-image: url(../images/separator_bawue.png);
+.fe_font.brandenburg .separator {
+  background-image: url(../images/separator_brandenburg.png);
+}
+.fe_font.bremen .separator {
+  background-image: url(../images/separator_bremen.png);
+}
+.fe_font.hamburg .separator {
+  background-image: url(../images/separator_hamburg.png);
+}
+.fe_font.hessen .separator {
+  background-image: url(../images/separator_hessen.png);
+}
+.fe_font.mecklenburg_vorpommern .separator {
+  background-image: url(../images/separator_mecklenburg_vorpommern.png);
+}
+.fe_font.niedersachsen .separator {
+  background-image: url(../images/separator_niedersachsen.png);
+}
+.fe_font.nordrhein_westfalen .separator {
+  background-image: url(../images/separator_nordrhein_westfalen.png);
+}
+.fe_font.rheinland_pfalz .separator {
+  background-image: url(../images/separator_rheinland_pfalz.png);
+}
+.fe_font.saarland .separator {
+  background-image: url(../images/separator_saarland.png);
+}
+.fe_font.sachsen_anhalt .separator {
+  background-image: url(../images/separator_sachsen_anhalt.png);
+}
+.fe_font.sachsen .separator {
+  background-image: url(../images/separator_sachsen.png);
+}
+.fe_font.schleswig_holstein .separator {
+  background-image: url(../images/separator_schleswig_holstein.png);
+}
+.fe_font.thueringen .separator {
+  background-image: url(../images/separator_thueringen.png);
 }
