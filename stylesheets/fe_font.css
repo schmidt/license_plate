@@ -80,7 +80,7 @@
   background-image: url(../images/separator_hessen.png);
 }
 .fe_font.mecklenburg_vorpommern .separator {
-  background-image: url(../images/separator_mecklenburg_vorpommern.png);
+  background-image: url(../images/separator.png);
 }
 .fe_font.niedersachsen .separator {
   background-image: url(../images/separator_niedersachsen.png);
@@ -101,7 +101,7 @@
   background-image: url(../images/separator_sachsen.png);
 }
 .fe_font.schleswig_holstein .separator {
-  background-image: url(../images/separator_schleswig_holstein.png);
+  background-image: url(../images/separator.png);
 }
 .fe_font.thueringen .separator {
   background-image: url(../images/separator_thueringen.png);
