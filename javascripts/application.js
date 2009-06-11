@@ -4,7 +4,6 @@
       this.each( function() {
         if ($(this).is("form")) {
           $(this).submit($.LicensePlate.onSubmit);
-          $(this).data("classNames", $(this).attr("class")); 
         }
         else {
           throw new Error("Works only with form elements");
