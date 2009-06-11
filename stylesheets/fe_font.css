@@ -58,8 +58,8 @@
 .fe_font .OE  { background-position: -819px -340px; }
 .fe_font .UE  { background-position: -897px -340px; }
 
-.fe_font.baden_wuertemberg .separator {
-  background-image: url(../images/separator_baden_wuertemberg.png);
+.fe_font.baden_wuerttemberg .separator {
+  background-image: url(../images/separator_baden_wuerttemberg.png);
 }
 .fe_font.bayern .separator {
   background-image: url(../images/separator_bayern.png);

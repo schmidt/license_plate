@@ -473,7 +473,7 @@
       "ZW"  : "Rheinland-Pfalz"
     },
     stateClassMapping : {
-      "Baden-Württemberg"      : "baden_wuertemberg",
+      "Baden-Württemberg"      : "baden_wuerttemberg",
       "Bayern"                 : "bayern",
       "Berlin"                 : "berlin",
       "Brandenburg"            : "brandenburg",
