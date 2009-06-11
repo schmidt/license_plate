@@ -4,6 +4,7 @@
       this.each( function() {
         if ($(this).is("form")) {
           $(this).submit($.LicensePlate.onSubmit);
+          $(this).data("classNames", $(this).attr("class")); 
         }
         else {
           throw new Error("Works only with form elements");
@@ -495,6 +496,15 @@
     stateCode : function(county) {
       return $.LicensePlate.stateClassMapping[$.LicensePlate.state(county)];
     },
+    resetCssClasses : function(element) {
+      element = $(element);
+      if (element.data("classNames")) {
+        element.attr("class", element.data("classNames"))
+      }
+      else {
+        element.data("classNames", element.attr("class"));
+      }
+    },
     onSubmit : function(eve) {
       $(this).find("[name=data]").each(function(){
         var input = $(this);
@@ -508,6 +518,7 @@
             previewElement.append($.LicensePlate.transformCharacter(this));
           });
 
+          $.LicensePlate.resetCssClasses(previewElement);
           previewElement.addClass($.LicensePlate.stateCode(plate.county));
 
           var separator = $.LicensePlate.generateSeparator();
