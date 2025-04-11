@@ -17,10 +17,10 @@
     parseData : function(input) {
       input = $(input);
       var preview = input.parents(".line").find(".preview");
-      var data = input.val().split("-");
+      var data = input.val().toUpperCase().split("-");
 
       if (data.length != 2) { return false; }
-      
+
       var county = data[0];
 
       data = data[1].split(" ");
@@ -29,14 +29,13 @@
       var letters = data[0];
       var numbers = data[1];
 
-      return {county : county, letters : letters, numbers : numbers }
+      var plate = county + '-' + letters + ' ' + numbers;
+
+      return { county : county, letters : letters, numbers : numbers, plate: plate }
     },
     transformCharacter : function(character) {
       if (character.match(/[0-9]/)) {
         return $.LicensePlate.transformNumber(character);
-      }
-      else if (character.match(/[a-zäöü]/)) {
-        return $.LicensePlate.transformLetter(character.toUpperCase());
       }
       else if (character.match(/[A-ZÄÖÜ]/)) {
         return $.LicensePlate.transformLetter(character);
@@ -826,7 +825,7 @@
     onSubmit : function(eve) {
       $(this).find("[name=data]").each(function(){
         var input = $(this);
-        var plate = $.LicensePlate.parseData(input); 
+        var plate = $.LicensePlate.parseData(input);
 
         if (plate) {
           var previewElement = input.parents(".line").find(".preview");
@@ -855,11 +854,11 @@
 
           previewElement.append("<br />");
 
-          previewElement.append($.LicensePlate.generateLink(input.val()));
+          previewElement.append($.LicensePlate.generateLink(plate.plate));
         }
       });
 
-      
+
       return false;
     }
   };

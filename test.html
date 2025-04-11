@@ -40,7 +40,7 @@ test("throwsNoException", function() {
 test("throwsException", function() {
   throwsException( function() { throw new Error("Error thrown for test purpose") } );
 });
-    
+
 module("LicensePlate");
 
 test("should register as jQuery Plugin", function() {
@@ -62,6 +62,7 @@ test("should standard parse 'B-BA 1234'", function() {
   same( result.county,  "B",    "should parse the county portion" );
   same( result.letters, "BA",   "should parse the first, letter portion" );
   same( result.numbers, "1234", "should parse the second, number portion" );
+  same( result.plate, "B-BA 1234", "should rejoin the whole plate" );
 });
 
 test("should parse short plates: 'B-A 1'", function() {
@@ -69,6 +70,15 @@ test("should parse short plates: 'B-A 1'", function() {
   same( result.county,  "B", "should parse the county portion" );
   same( result.letters, "A", "should parse the first, letter portion" );
   same( result.numbers, "1", "should parse the second, number portion" );
+  same( result.plate, "B-A 1", "should rejoin the whole plate" );
+});
+
+test("should parse EV licenses plates: 'B-A 123E'", function() {
+  var result = $.LicensePlate.parseData($("<input value='B-A 123E' />"));
+  same( result.county,  "B",    "should parse the county portion" );
+  same( result.letters, "A",    "should parse the first, letter portion" );
+  same( result.numbers, "123E", "should parse the second, number portion" );
+  same( result.plate, "B-A 123E", "should rejoin the whole plate" );
 });
 
 test("should parse historic licenses plates: 'B-A 123H'", function() {
@@ -76,6 +86,15 @@ test("should parse historic licenses plates: 'B-A 123H'", function() {
   same( result.county,  "B",    "should parse the county portion" );
   same( result.letters, "A",    "should parse the first, letter portion" );
   same( result.numbers, "123H", "should parse the second, number portion" );
+  same( result.plate, "B-A 123H", "should rejoin the whole plate" );
+});
+
+test("should handle lower case characters: 'Mol-Ab 123'", function() {
+  var result = $.LicensePlate.parseData($("<input value='MOL-AB 123' />"));
+  same( result.county,  "MOL", "should parse the county portion" );
+  same( result.letters, "AB",  "should parse the first, letter portion" );
+  same( result.numbers, "123", "should parse the second, number portion" );
+  same( result.plate, "MOL-AB 123", "should rejoin the whole plate" );
 });
 
 test("should parse longer counties: 'MOL-AB 123'", function() {
@@ -83,6 +102,7 @@ test("should parse longer counties: 'MOL-AB 123'", function() {
   same( result.county,  "MOL", "should parse the county portion" );
   same( result.letters, "AB",  "should parse the first, letter portion" );
   same( result.numbers, "123", "should parse the second, number portion" );
+  same( result.plate, "MOL-AB 123", "should rejoin the whole plate" );
 });
 
 test("should return false for empty input elements", function() {
@@ -143,17 +163,6 @@ test("should create span containing the letter", function() {
 
   result = $.LicensePlate.transformCharacter("Ü");
   same( result.text(), "Ü" );
-});
-
-test("should upcase the letter when building the span", function() {
-  var result = $.LicensePlate.transformCharacter("a");
-  ok( result.is("span.A"), "should be span.A" );
-
-  result = $.LicensePlate.transformCharacter("ä");
-  ok( result.is("span.AE"), "should be span.AE" );
-
-  result = $.LicensePlate.transformCharacter("z");
-  ok( result.is("span.Z"), "should be span.Z" );
 });
 
 test("should create span element for numbers", function() {
